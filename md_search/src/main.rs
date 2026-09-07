@@ -10,4 +10,13 @@ fn main() {
     } else {
         println!("「{}」は見つかりませんでした", keyword);
     }
+
+    let entries = fs::read_dir(".").unwrap();
+    println!("{:?}", entries);//これだとReadDir(".")が出力された
+
+    for entry in entries {
+        println!("{:?}", entry);//Ok(DirEntry(".\\.git"))
+        let entry = entry.unwrap();
+        println!("{:?}", entry);//DirEntry(".\\.git")
+    }
 }
