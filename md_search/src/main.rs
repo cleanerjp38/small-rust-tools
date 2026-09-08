@@ -18,5 +18,7 @@ fn main() {
         println!("{:?}", entry);//Ok(DirEntry(".\\.git"))
         let entry = entry.unwrap();
         println!("{:?}", entry);//DirEntry(".\\.git")
+
+        println!("{:?}", entry.path());//".\\.git"
     }
 }
