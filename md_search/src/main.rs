@@ -22,5 +22,8 @@ fn main() {
         let path = entry.path();
         println!("{:?}", path);//".\\.git"
         println!("{:?}", path.extension());//None
+        if path.extension() == Some(std::ffi::OsStr::new("md")) {
+            println!("Markdown発見: {:?}", path);//現在、md_searchフォルダにmdファイルはないので、なにも表示されない
+        }
     }
 }
