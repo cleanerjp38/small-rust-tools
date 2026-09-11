@@ -24,6 +24,7 @@ fn main() {
         println!("{:?}", path.extension());//None
         if path.extension() == Some(std::ffi::OsStr::new("md")) {
             println!("Markdown発見: {:?}", path);//現在、md_searchフォルダにmdファイルはないので、なにも表示されない
+            println!("ファイル名: {:?}", path.file_name());//もしmdファイルがあれば、名前を表示する
         }
     }
 }
