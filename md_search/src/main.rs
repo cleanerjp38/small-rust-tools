@@ -11,7 +11,9 @@ fn main() {
         println!("「{}」は見つかりませんでした", keyword);
     }
 
-    let entries = fs::read_dir(".").unwrap();
+    let target_dir = ".";//この変数に検索先フォルダのPathを入れると、そこに飛べる
+    println!("検索先フォルダ:{}", target_dir);
+    let entries = fs::read_dir(target_dir).unwrap();
     println!("{:?}", entries);//これだとReadDir(".")が出力された
 
     for entry in entries {
