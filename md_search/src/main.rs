@@ -1,4 +1,5 @@
 use std::fs;
+use std::env;
 
 fn main() {
     let content = fs::read_to_string("Cargo.toml").unwrap();
@@ -10,6 +11,11 @@ fn main() {
     } else {
         println!("「{}」は見つかりませんでした", keyword);
     }
+
+    //env::args()はどういう操作なんだろう？ターミナル系の操作なのかな
+    let args: Vec<String> = env::args().collect();//cargo run -- testと入力すると、argsに要素が詰まった。
+    //rust_analyzerでrunしたら、ターミナル操作ではなかったので、testは出力されなかった。
+    println!("{:?}", args);//["target\\debug\\md_search.exe", "test"]と出力された
 
     let target_dir = ".";//この変数に検索先フォルダのPathを入れると、そこに飛べる
     println!("検索先フォルダ:{}", target_dir);
