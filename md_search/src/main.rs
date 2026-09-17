@@ -17,7 +17,7 @@ fn main() {
     //rust_analyzerでrunしたら、ターミナル操作ではなかったので、testは出力されなかった。
     println!("{:?}", args);//["target\\debug\\md_search.exe", "test"]と出力された
 
-    let target_dir = ".";//この変数に検索先フォルダのPathを入れると、そこに飛べる
+    let target_dir = &args[1];//この変数に検索先フォルダのPathを入れると、そこに飛べる。変更010にて、コマンドライン引数を入れた
     println!("検索先フォルダ:{}", target_dir);
     let entries = fs::read_dir(target_dir).unwrap();
     println!("{:?}", entries);//これだとReadDir(".")が出力された
