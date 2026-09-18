@@ -2,7 +2,6 @@ use std::fs;
 use std::env;
 
 fn main() {
-    let content = fs::read_to_string("Cargo.toml").unwrap();
 
     //env::args()はどういう操作なんだろう？ターミナル系の操作なのかな
     let args: Vec<String> = env::args().collect();//cargo run -- testと入力すると、argsに要素が詰まった。
@@ -16,12 +15,6 @@ fn main() {
     
     let keyword = &args[2];//コマンドライン引数で、Markdown内の検索ワードを変数に入れる
 
-    if content.contains(keyword){
-        println!("「{}」が見つかりました！", keyword);
-    } else {
-        println!("「{}」は見つかりませんでした", keyword);
-    }
-
     for entry in entries {
         //println!("{:?}", entry);//Ok(DirEntry(".\\.git"))
         let entry = entry.unwrap();
@@ -31,8 +24,13 @@ fn main() {
         //println!("{:?}", path);//".\\.git"
         //println!("{:?}", path.extension());//None
         if path.extension() == Some(std::ffi::OsStr::new("md")) {
-            //println!("Markdown発見: {:?}", path);//現在、md_searchフォルダにmdファイルはないので、なにも表示されない
-            //println!("ファイル名: {:?}", path.file_name());//もしmdファイルがあれば、名前を表示する
+            let content = fs::read_to_string(&path).unwrap();
+
+                if content.contains(keyword){
+                println!("「{}」が見つかりました！ {:?}", keyword, path.file_name());
+            }// else { 見つからない場合は出力しないようにしないと、Markdownが膨大な場合はメッセージ量が酷いことになる
+                //println!("「{}」は見つかりませんでした", keyword);
+            //}
         }
     }
 }
