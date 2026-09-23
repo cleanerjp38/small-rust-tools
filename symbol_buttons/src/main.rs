@@ -4,6 +4,8 @@ fn main() {
     let symbols = ["√", "π", "θ", "∑"];
     let mut formula = String::new();
 
+    println!("0: 完成");
+
     for (i, symbol) in symbols.iter().enumerate() {
         println!("{}: {}", i + 1, symbol);
     }
@@ -13,6 +15,10 @@ fn main() {
         io::stdin().read_line(&mut input).unwrap();
 
         let choice: usize = input.trim().parse().unwrap();
+
+        if choice == 0 {
+            break;
+        }
 
         formula.push_str(symbols[choice - 1]);
 
