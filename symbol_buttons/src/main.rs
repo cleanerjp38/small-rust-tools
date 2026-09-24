@@ -1,7 +1,7 @@
 use std::io;
 
 fn main() {
-    let symbols = ["√", "π", "θ", "∑"];
+    let symbols = ["√", "π", "θ", "∑", "≤"];
     let mut formula = String::new();
 
     println!("0: 完成");
