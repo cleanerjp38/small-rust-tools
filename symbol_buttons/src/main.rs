@@ -1,10 +1,11 @@
 use std::io;
 
 fn main() {
-    let symbols = ["√", "π", "θ", "∑", "≤"];
+    let symbols = ["√", "π", "θ", "∑", "≤", "≥", "≠"];
     let mut formula = String::new();
 
     println!("0: 完成");
+    println!("8: ←");
 
     for (i, symbol) in symbols.iter().enumerate() {
         println!("{}: {}", i + 1, symbol);
@@ -18,6 +19,12 @@ fn main() {
 
         if choice == 0 {
             break;
+        }
+
+        if choice == 8 {
+            formula.pop();//pop()は末尾の1文字を取り除く
+            println!("選択: {}", formula);
+            continue;
         }
 
         formula.push_str(symbols[choice - 1]);
