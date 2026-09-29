@@ -19,6 +19,7 @@ fn main() {
         let choice: usize = input.trim().parse().unwrap();
 
         if choice == 0 {
+            println!("完成した数式: {}", formula);
             break;
         }
 

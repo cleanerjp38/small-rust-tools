@@ -1,5 +1,5 @@
 [workspace]
-members = [
+members = ["math_symbols_wasm",
     # ここに作ったプログラムのフォルダ名を並べていく
-    "md_search",
+    "md_search", "symbol_buttons",
 ]
